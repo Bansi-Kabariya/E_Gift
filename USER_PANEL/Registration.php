@@ -203,58 +203,56 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
 
 <?php
 
+	// if(isset($_POST['user']))
+	// {
+	// 	$name     = $_POST['fname'];
+  //   $gender  = $_POST['gender'];
+	// 	$email    = $_POST['email'];
+  //   $pass    = $_POST['pass'];
+  //   $cpass    = $_POST['cpass'];
+  //   $phone    = $_POST['mobile'];
+	// 	$address = $_POST['address'];
 
+	// 	$dup_email = mysqli_query($conn, "SELECT * FROM `user` WHERE email = '$email'");
+	// 	$dup_uname = mysqli_query($conn, "SELECT * FROM `user` WHERE username = '$uname'");
 
-	if(isset($_POST['user']))
-	{
-		$name     = $_POST['fname'];
-    $gender  = $_POST['gender'];
-		$email    = $_POST['email'];
-    $pass    = $_POST['pass'];
-    $cpass    = $_POST['cpass'];
-    $phone    = $_POST['mobile'];
-		$address = $_POST['address'];
-
-		$dup_email = mysqli_query($conn, "SELECT * FROM `user` WHERE email = '$email'");
-		$dup_uname = mysqli_query($conn, "SELECT * FROM `user` WHERE username = '$uname'");
-
-		if(mysqli_num_rows($dup_email))
-		{
-			echo "
-				<script>
+	// 	if(mysqli_num_rows($dup_email))
+	// 	{
+	// 		echo "
+	// 			<script>
 					
-					alert('This email is already taken');
-					window.location.href='register.php';
+	// 				alert('This email is already taken');
+	// 				window.location.href='register.php';
 
-				</script>
-				";
-		}
-		if(mysqli_num_rows($dup_uname))
-		{
-			echo "
-				<script>
+	// 			</script>
+	// 			";
+	// 	}
+	// 	if(mysqli_num_rows($dup_uname))
+	// 	{
+	// 		echo "
+	// 			<script>
 					
-					alert('This username is already taken');
-					window.location.href='register.php';
+	// 				alert('This username is already taken');
+	// 				window.location.href='register.php';
 
-				</script>
-				";
-		}
-		else
-		{
-			mysqli_query($conn, "INSERT INTO `user`(`u_name`, `u_gender`, `u_email`, `u_pass`, `u_cpass`,`u_phone`,`u_adddress`) VALUES ('$name','$gender','$email','$pass','$cpass','$phone','$adress')");
+	// 			</script>
+	// 			";
+	// 	}
+	// 	else
+	// 	{
+	// 		mysqli_query($conn, "INSERT INTO `user`(`u_name`, `u_gender`, `u_email`, `u_pass`, `u_cpass`,`u_phone`,`u_adddress`) VALUES ('$name','$gender','$email','$pass','$cpass','$phone','$adress')");
 
-			echo "
-				<script>
+	// 		echo "
+	// 			<script>
 					
-					alert('Register successfully!');
-					window.location.href='login.php';
+	// 				alert('Register successfully!');
+	// 				window.location.href='login.php';
 
-				</script>
-				";
-		}
+	// 			</script>
+	// 			";
+	// 	}
 
-	}
+	// }
 ?>
 
 
