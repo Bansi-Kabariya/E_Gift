@@ -19,18 +19,16 @@
   <img src="img/c13.jpg" >
   <div class="card-body">
     <h5 class="card-title">Tooth-Brush</h5>
-    <p>₹350</p>
     <p class="card-text">Eco-FRiendly Brush , reusable.</p>
-    <a href="cart.php" class="btn btn-success">add to cart</a>
+    <a href="cart.php" class="btn btn-primary">add to cart</a>
 </div>
 </div>
     </div>
     <img  src="img/c5.jpg" >
   <div class="card-body">
     <h5 class="card-title">Tooth Brush holder</h5>
-    <p>₹250</p>
     <p class="card-text">Eco-FRiendly holder , stylish and reusable jute Tooth brush holder.</p>
-    <a href="cart.php" class="btn btn-success">add to cart</a>
+    <a href="cart.php" class="btn btn-primary">add to cart</a>
 </div>
 </div>
     </div>

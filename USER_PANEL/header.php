@@ -16,6 +16,28 @@
         z-index: 1000;
       }
     </style>
+    <!-- <script>
+function searchDept() {
+    let s = document.getElementById('dept-search').value;
+
+    if (s.trim() === "") return; // empty search → do nothing
+    
+    // Redirect to search page
+    window.location.href = "search_all.php?search=" + encodeURIComponent(s);
+}
+</script> -->
+
+<script>
+function searchSite() {
+    let s = document.getElementById('dept-search').value.trim();
+
+    if (s === "") return;
+
+    window.location.href = "search_all.php?search=" + encodeURIComponent(s);
+}
+</script>
+
+
 </head>
 <body>
 <header>
@@ -48,15 +70,16 @@
             <a class="nav-link" href="cart.php">Cart</a>
           </li>
         </ul>
-        
+<!-- <input type="text" id="dept-search" onkeydown="if(event.key==='Enter') searchDept()" placeholder="Search.."> -->
+
+<input type="text" id="dept-search" 
+       onkeydown="if(event.key==='Enter') searchSite()" 
+       placeholder="Search...">
+
+
         <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-success me-2" type="button">Search</button>
-          <li class="nav-item">
-
-            <a href="login.php" class="btn btn-success">Login</a>
-
-          </li>
+          <!-- <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button> -->
         </form>
       </div>
 

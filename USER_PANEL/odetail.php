@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cart</title>
-    
 
   <style>
     .section 
@@ -56,7 +55,8 @@
       background: #1b5e20; 
     }
   </style>
-  <?php include'header.php'; ?> 
+      <?php include'header.php'; ?>
+
 </head>
 <body>
   <div class="section">
@@ -115,5 +115,10 @@
         <td>Available</td> -->
       </tr>
       
-  </table>
+    </table>
+   
+  </div>
+        <?php include'footer.php'; ?>
+
+</body>
 </html>

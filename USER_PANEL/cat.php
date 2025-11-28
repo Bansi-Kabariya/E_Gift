@@ -20,7 +20,7 @@
   <div class="card-body">
     <h5 class="card-title">Mat</h5>
     <p class="card-text">Eco-FRiendly Mat , stylish and reusable jute mat.</p>
-    <a href="mat.php" class="btn btn-success">View</a>
+    <a href="mat.php" class="btn btn-primary">View</a>
    </div>
   </div>
     <div class="col-sm">
@@ -28,7 +28,7 @@
   <div class="card-body">
     <h5 class="card-title">Care</h5>
     <p class="card-text">Eco-FRiendly Care.</p>
-    <a href="care.php" class="btn btn-success">View</a>
+    <a href="care.php" class="btn btn-primary">View</a>
 </div>
     </div>
     <div class="col-sm">
@@ -36,7 +36,7 @@
   <div class="card-body">
     <h5 class="card-title">Card</h5>
     <p class="card-text">Eco-FRiendly Cards.</p>
-    <a href="card.php" class="btn btn-success">View</a>
+    <a href="card.php" class="btn btn-primary">View</a>
 </div>
     </div>
 </div>

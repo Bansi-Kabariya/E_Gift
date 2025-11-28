@@ -10,73 +10,54 @@
     .section 
     {
       margin-top: 100px; 
-      margin-bottom: 50px;
       background: white;
-      margin-right: 30px;
-      margin-left: 30px;
-      padding: 30px; 
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-right: 10px;
+      padding: 20px; 
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin-left: 10px;
     }
     .section h2 
     {
-      margin-bottom: 25px; 
-      margin-left: 0; 
-      border-left: 5px solid green; 
-      padding-left: 15px;
-      color: #374151;
-      font-weight: 600;
+      margin-bottom: 15px; 
+      margin-left: 15px; 
+      border-left: 5px solid #2e7d32; 
+      padding-left: 10px;
     }
     table 
     {
       width: 100%; 
       border-collapse: collapse; 
-      margin-top: 20px;
+      margin-top: 15px;
     }
     table th, table td 
     {
-      border: 1px solid #e5e7eb; 
-      padding: 15px; 
+      border: 1px solid #ddd; 
+      padding: 10px; 
       text-align: center;
     }
     table th 
     {
-      background: green; 
-      color: white;
-      font-weight: 600;
-    }
-    table tr:hover 
-    {
-      background-color: #f9fafb;
-    }
-    table img 
-    {
-      max-width: 80px;
-      border-radius: 6px;
-    }
-    .btn-container 
-    {
-      text-align: right;
-      margin-top: 25px;
+      background: #2e7d32; 
+      color: white; 
     }
     button 
     {
-      padding: 12px 40px;
+      padding: 30px 30px;
+      margin-left: 1200px;
       border: none; 
-      border-radius: 6px; 
+      border-radius: 10px; 
       cursor: pointer;
-      background: green; 
+      background: #2e7d32; 
       color: white;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
     }
     button:hover 
     { 
-      background: green; 
+      background: #1b5e20; 
     }
   </style>
-  <?php include'header.php'; ?> 
+  <?php include'header.php'; ?>
+
 </head>
 <body>
   <div class="section">
@@ -136,11 +117,9 @@
       </tr>
       
     </table>
-    <div class="btn-container">
-      <a href="order.php">
-        <button>Make Order</button>
-      </a>
-    </div>
+    <a href="order.php">
+            <button onclick="order.php">Make Order</button>
+        </a> 
   </div>
         <?php include'footer.php'; ?>
 
