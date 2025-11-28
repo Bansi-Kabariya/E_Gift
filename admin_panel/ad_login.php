@@ -1,25 +1,18 @@
 <?php
-
-include('config.php');
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Check username & password in database
-    $query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
-    $result = $con->query($query);
-
-    if ($result->num_rows == 1) {
-        header("Location: admin_panel_main.php");
-        exit();
-    } else {
-        $error = "Invalid Username or Password!";
-    }
+  // Fixed credentials
+  if ($username === "egift" && $password === "123") {
+    // Redirect to admin panel
+    header("Location: admin_panel_main.php");
+    exit();
+  } else {
+    $error = "Invalid Username or Password!";
+  }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
