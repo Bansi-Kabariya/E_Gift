@@ -233,7 +233,6 @@
                     <div class="category-desc">Reusable natural-fiber bags & accessories.</div>
                 </div>
             </div>
-
         </div>
     </div>
 
