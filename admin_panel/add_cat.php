@@ -82,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Add Category</title>
 
 <style>
-  .section {
+  .section 
+  {
     margin-top: 40px; 
     background: white;
     padding: 25px; 
@@ -91,20 +92,63 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     margin: 70px auto;
     width: 600px;
   }
-  .section h2 {
+  .section h2 
+  {
     margin-bottom: 20px; 
     margin-left: 15px; 
     border-left: 5px solid #2e7d32; 
     padding-left: 10px;
   }
-  form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; }
-  label { font-weight: bold; }
-  input, textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; }
-  input.error, textarea.error { border-color: red; }
-  input.valid, textarea.valid { border-color: green; }
-  .error-message { color: red; font-size: 13px; display: none; margin-top: 5px; margin-bottom: -5px; }
-  button { width: 200px; padding: 10px; border: none; border-radius: 5px; cursor: pointer; background: #2e7d32; color: white; font-size: 16px; align-self: center; }
-  button:hover { background: #1b5e20; }
+  form 
+  { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    max-width: 500px; 
+  }
+  label 
+  { 
+    font-weight: bold; 
+  }
+  input, textarea 
+  { 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    width: 100%; 
+  }
+  input.error, textarea.error 
+  { 
+    border-color: red; 
+  }
+  input.valid, textarea.valid 
+  { 
+    border-color: green; 
+  }
+  .error-message 
+  { 
+    color: red; 
+    font-size: 13px; 
+    display: none; 
+    margin-top: 5px; 
+    margin-bottom: -5px; 
+  }
+  button 
+  { 
+    width: 200px; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    background: #2e7d32; 
+    color: white; 
+    font-size: 16px; 
+    align-self: center; 
+  }
+  button:hover 
+  { 
+    background: #1b5e20; 
+  }
 </style>
 
 </head>
