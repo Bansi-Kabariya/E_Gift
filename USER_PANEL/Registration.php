@@ -65,7 +65,7 @@
           <h3 class="fw-bold mb-0"><i class="fa-solid fa-user-plus me-2"></i>Register</h3>
         </div>
         <div class="card-body p-4">
-          <form id="registerForm" novalidate>
+          <form id="registerForm" method="POST" novalidate>
             <div class="row g-4">
               <div class="col-lg-6">
                 <div class="mb-3">
@@ -173,12 +173,12 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
           field.classList.add('error');
           error.innerText = "Enter a valid 10-digit number.";
           error.style.display = 'block';
-        } else if (field.name === 'password' && !passwordPattern.test(field.value)) {
+        } else if (field.name === 'pass' && !passwordPattern.test(field.value)) {
           valid = false;
           field.classList.add('error');
           error.innerText = "Password must be at least 8 characters, include uppercase, lowercase, number, and special character.";
           error.style.display = 'block';
-        } else if (field.name === 'confirm_password' && field.value !== form.querySelector('[name="password"]').value) {
+        } else if (field.name === 'cpass' && field.value !== form.querySelector('[name="pass"]').value) {
           valid = false;
           field.classList.add('error');
           error.innerText = "Passwords do not match.";
@@ -192,68 +192,102 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
   });
 
   if (valid) {
-    alert("✅ Registration Successful");
-  }
+    this.submit();  // <-- sends data to PHP
+}
 });
 </script>
 </body>
 </html>
 
-<?php include'connection.php'; ?>
 
-<?php
+<?php 
+// include 'connection.php';  
 
-	// if(isset($_POST['user']))
-	// {
-	// 	$name     = $_POST['fname'];
-  //   $gender  = $_POST['gender'];
-	// 	$email    = $_POST['email'];
-  //   $pass    = $_POST['pass'];
-  //   $cpass    = $_POST['cpass'];
-  //   $phone    = $_POST['mobile'];
-	// 	$address = $_POST['address'];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-	// 	$dup_email = mysqli_query($conn, "SELECT * FROM `user` WHERE email = '$email'");
-	// 	$dup_uname = mysqli_query($conn, "SELECT * FROM `user` WHERE username = '$uname'");
+//     $name    = $_POST['fname'];
+//     $email   = $_POST['email'];
+//     $pass    = $_POST['pass'];
+//     $cpass   = $_POST['cpass'];
+//     $gender  = $_POST['gender'];
+//     $mobile  = $_POST['mobile'];
+//     $address = $_POST['address'];
 
-	// 	if(mysqli_num_rows($dup_email))
-	// 	{
-	// 		echo "
-	// 			<script>
-					
-	// 				alert('This email is already taken');
-	// 				window.location.href='register.php';
+//     if ($pass !== $cpass) {
+//         echo "<script>alert('Passwords do not match!');</script>";
+//         exit;
+//     }
 
-	// 			</script>
-	// 			";
-	// 	}
-	// 	if(mysqli_num_rows($dup_uname))
-	// 	{
-	// 		echo "
-	// 			<script>
-					
-	// 				alert('This username is already taken');
-	// 				window.location.href='register.php';
+//     $check = $con->query("SELECT * FROM user WHERE u_email='$email'");
+//     if ($check->num_rows > 0) {
+//         echo "<script>alert('Email already registered!');</script>";
+//         exit;
+//     }
 
-	// 			</script>
-	// 			";
-	// 	}
-	// 	else
-	// 	{
-	// 		mysqli_query($conn, "INSERT INTO `user`(`u_name`, `u_gender`, `u_email`, `u_pass`, `u_cpass`,`u_phone`,`u_adddress`) VALUES ('$name','$gender','$email','$pass','$cpass','$phone','$adress')");
+//     $sql = "INSERT INTO user (u_name, u_gender, u_email, u_pass, u_cpass, u_phone, u_address)
+//             VALUES ('$name', '$gender', '$email', '$pass', '$cpass', '$mobile', '$address')";
 
-	// 		echo "
-	// 			<script>
-					
-	// 				alert('Register successfully!');
-	// 				window.location.href='login.php';
+//     if ($con->query($sql)) {
+//         echo "<script>
+//                 alert('Registration Successful!');
+//                 window.location='login.php';
+//               </script>";
+//     } else {
+//         echo "<script>alert('Error: Could not register.');</script>";
+//     }
+// }
 
-	// 			</script>
-	// 			";
-	// 	}
 
-	// }
+include 'connection.php';  
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $name    = trim($_POST['fname']);
+    $email   = trim($_POST['email']);
+    $pass    = $_POST['pass'];
+    $cpass   = $_POST['cpass'];
+    $gender  = $_POST['gender'];
+    $mobile  = trim($_POST['mobile']);
+    $address = trim($_POST['address']);
+
+    // Check passwords match
+    if ($pass !== $cpass) {
+        echo "<script>alert('Passwords do not match!');</script>";
+        exit;
+    }
+
+    // Check if email already exists
+    $stmt = $con->prepare("SELECT u_email FROM user WHERE u_email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    if ($stmt->num_rows > 0) {
+        echo "<script>alert('Email already registered!');</script>";
+        $stmt->close();
+        exit;
+    }
+    $stmt->close();
+
+    // Hash the password
+    $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+
+    // Insert user securely
+    $stmt = $con->prepare("INSERT INTO user (u_name, u_gender, u_email, u_pass, u_phone, u_address) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $name, $gender, $email, $hashedPass, $mobile, $address);
+
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Registration Successful!');
+                window.location='login.php';
+              </script>";
+    } else {
+        echo "<script>alert('Error: Could not register.');</script>";
+    }
+    $stmt->close();
+}
 ?>
+
+
 
 
   <?php include'footer.php'; ?>

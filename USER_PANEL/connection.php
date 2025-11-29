@@ -4,7 +4,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$database="library";
+$database="e_gift";
 
 $con = new mysqli($servername,$username,$password,$database);
 

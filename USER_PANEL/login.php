@@ -6,7 +6,51 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2d6e5e5e36.js" crossorigin="anonymous"></script>
 
-  <?php include'header.php'; ?>
+  <?php include 'header.php'; ?>
+
+<?php
+include 'connection.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    // Fetch user from database
+    $stmt = $con->prepare("SELECT u_email, u_pass FROM user WHERE u_email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($db_email, $db_pass);
+        $stmt->fetch();
+
+        // ❗ Since your password is NOT hashed, use direct comparison
+        if ($password === $db_pass) {
+
+            $_SESSION['user_email'] = $db_email;
+
+            echo "<script>
+                    alert('Login Successful');
+                    window.location.href = 'index.php';
+                  </script>";
+            exit;
+        } else {
+            echo "<script>alert('Invalid Email or Password');</script>";
+        }
+
+    } else {
+        echo "<script>alert('Invalid Email or Password');</script>";
+    }
+
+    $stmt->close();
+}
+?>
 
   <style>
     body {
@@ -65,7 +109,7 @@
           <h3 class="fw-bold mb-0"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</h3>
         </div>
         <div class="card-body p-4">
-          <form id="loginForm" novalidate>
+          <form id="loginForm" method="POST" novalidate>
             <div class="mb-3">
               <label>Email</label>
               <input type="email" class="form-control" name="email" placeholder="Enter email">
@@ -125,7 +169,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   });
 
   if (valid) {
-    alert("✅ Login Successful (static demo only)");
+    this.submit();   // send form to PHP
   }
 });
 </script>
@@ -133,4 +177,4 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 </body>
 </html>
 
-<?php include'footer.php'; ?>
+<?php include 'footer.php'; ?>

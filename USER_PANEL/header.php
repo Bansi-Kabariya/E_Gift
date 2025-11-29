@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-      header 
-      {
+
+  <style>
+      header {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000;
       }
-    </style>
+  </style>
 </head>
 <body>
 <header>
@@ -48,13 +51,20 @@
             <a class="nav-link" href="cart.php">Cart</a>
           </li>
         </ul>
-        
+
         <form class="d-flex">
           <input class="form-control me-2" type="text" placeholder="Search">
           <button class="btn btn-success me-2" type="button">Search</button>
+
           <li class="nav-item">
 
-            <a href="login.php" class="btn btn-success">Login</a>
+            <?php if (isset($_SESSION['user_email'])): ?>
+                <!-- User is logged in → Logout button -->
+                <a href="logout.php" class="btn btn-danger">Logout</a>
+            <?php else: ?>
+                <!-- User NOT logged in → Login button -->
+                <a href="login.php" class="btn btn-success">Login</a>
+            <?php endif; ?>
 
           </li>
         </form>
@@ -64,12 +74,6 @@
   </nav>
 </header>
 
-
-<div class="container-fluid mt-3">
-  <!--<h3>Navbar Forms</h3>
-  <p>You can also include forms inside the navigation bar.</p>-->
-</div>
+<div class="container-fluid mt-3"></div>
 </body>
 </html>
-
-
