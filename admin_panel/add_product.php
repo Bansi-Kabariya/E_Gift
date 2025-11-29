@@ -95,10 +95,10 @@
         <label for="pcat">Category:</label>
         <select id="pcat" name="pcat">
           <option value="">-- Select Category --</option>
-          <option value="C001">Bamboo</option>
-          <option value="C002">Jute</option>
-          <option value="C003">Clay</option>
-          <option value="C004">Gift</option>
+          <option value="C001"></option>
+          <option value="C002"></option>
+          <option value="C003"></option>
+          <option value="C004"></option>
         </select>
         <div id="pcatError" class="error-message">Please select a category.</div>
       </div>

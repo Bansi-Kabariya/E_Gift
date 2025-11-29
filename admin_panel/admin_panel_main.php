@@ -15,7 +15,7 @@
     }
 
     header {
-      background: linear-gradient(135deg, #3a5a40, #6b4226); /* green-brown mix */
+      background: linear-gradient(135deg, #3a5a40, #6b4226);
       color: white; 
       padding: 15px 20px;
       font-size: 22px; 
@@ -53,7 +53,7 @@
 
     .sidebar {
       width: 230px; 
-      background: linear-gradient(180deg, #2e7d32, #5a3c2c); /* earthy gradient */
+      background: linear-gradient(180deg, #2e7d32, #5a3c2c); 
       height: 100vh; 
       color: white;
       position: fixed; 
@@ -72,7 +72,7 @@
     }
 
     .sidebar a:hover { 
-      background: rgba(90, 60, 44, 0.9); /* brown hover */
+      background: rgba(90, 60, 44, 0.9);
     }
 
     .content { 
@@ -81,14 +81,13 @@
       flex: 1; 
     }
 
-    /* Dropdown */
     .dropdown {
       position: relative;
     }
 
     .dropdown-content {
       display: none;
-      background: #4b6043; /* mossy green */
+      background: #4b6043;
     }
 
     .dropdown-content a {
@@ -98,7 +97,7 @@
     }
 
     .dropdown-content a:hover {
-      background: #6b4226; /* earthy brown */
+      background: #6b4226;
     }
 
     .dropdown:hover .dropdown-content {
@@ -121,6 +120,7 @@
   <div class="sidebar">
     <a href="dashboard.php">🏠 Dashboard</a>
     <a href="manage_products.php">📦 Manage Products</a>
+    <a href="manage_cat.php">🗂 Manage Category</a> 
     <a href="manage_orders.php">🛒 Manage Orders</a>
     <a href="manage_users.php">👥 Users</a>
     <a href="manage_feedbacks.php">💬 Feedbacks</a>

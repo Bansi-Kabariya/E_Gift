@@ -1,21 +1,13 @@
 <?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "e_gift";  // change this to your actual database name
 
-//MYSQLi object-oriented
-$servername="localhost";
-$username="root";
-$password="";
-$database="e_gift";
+$con = new mysqli($host, $user, $pass, $db);
 
-$conn = new mysqli($servername,$username,$password,$database);
-
-//check connection
-
-if(mysqli_connect_error())
-{
-    die("Database connection failed:".mysqli_connect_error());
-}
-else
-{
-    echo "Connection Done" . "<br>";
+// Stop showing error messages on the page
+if ($con->connect_error) {
+    die("Database connection failed: " . $con->connect_error);
 }
 ?>
