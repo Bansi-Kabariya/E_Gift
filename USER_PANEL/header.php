@@ -18,7 +18,33 @@ session_start();
         width: 100%;
         z-index: 1000;
       }
+<<<<<<< HEAD
+    </style>
+    <!-- <script>
+function searchDept() {
+    let s = document.getElementById('dept-search').value;
+
+    if (s.trim() === "") return; // empty search → do nothing
+    
+    // Redirect to search page
+    window.location.href = "search_all.php?search=" + encodeURIComponent(s);
+}
+</script> -->
+
+<script>
+function searchSite() {
+    let s = document.getElementById('dept-search').value.trim();
+
+    if (s === "") return;
+
+    window.location.href = "search_all.php?search=" + encodeURIComponent(s);
+}
+</script>
+
+
+=======
   </style>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
 </head>
 <body>
 <header>
@@ -51,6 +77,18 @@ session_start();
             <a class="nav-link" href="cart.php">Cart</a>
           </li>
         </ul>
+<<<<<<< HEAD
+<!-- <input type="text" id="dept-search" onkeydown="if(event.key==='Enter') searchDept()" placeholder="Search.."> -->
+
+<input type="text" id="dept-search" 
+       onkeydown="if(event.key==='Enter') searchSite()" 
+       placeholder="Search...">
+
+
+        <form class="d-flex">
+          <!-- <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button> -->
+=======
 
         <form class="d-flex">
           <input class="form-control me-2" type="text" placeholder="Search">
@@ -67,6 +105,7 @@ session_start();
             <?php endif; ?>
 
           </li>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
         </form>
       </div>
 

@@ -30,12 +30,12 @@
                 <p>Thank you for joining us on this journey. Let’s make every gift count — for your loved ones and for the Earth.</p><br>
             </td>
             <td>
-                <img src="img/4.jpg"/>
-            </td>
-        </tr>
-
+                <img src="img/4.jpg"/>  
+                <img src="img/c4.jpg"/>  
+                <img src="img/ig1.jpg"/>              
+                </td>
+            
     </table>
-<br>
 
     <?php include'footer.php'; ?>
 </body>

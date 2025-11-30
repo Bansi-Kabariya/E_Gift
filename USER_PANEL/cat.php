@@ -94,12 +94,39 @@ $cat_result = $con->query($cat_sql);
 </head>
 
 <body>
+<<<<<<< HEAD
+<div class="container">
+  <div class="row">
+   <div class="col-sm">
+  <img src="img/c7.jpg" style="width: 80%;">
+  <div class="card-body">
+    <h5 class="card-title">Mat</h5>
+    <p class="card-text">Eco-FRiendly Mat , stylish and reusable jute mat.</p>
+    <a href="mat.php" class="btn btn-primary">View</a>
+   </div>
+  </div>
+    <div class="col-sm">
+   <img src="img/c12.jpg" style="width: 80%;">
+  <div class="card-body">
+    <h5 class="card-title">Care</h5>
+    <p class="card-text">Eco-FRiendly Care.</p>
+    <a href="care.php" class="btn btn-primary">View</a>
+</div>
+    </div>
+    <div class="col-sm">
+   <img src="img/c14.jpg" style="width: 80%;">
+  <div class="card-body">
+    <h5 class="card-title">Card</h5>
+    <p class="card-text">Eco-FRiendly Cards.</p>
+    <a href="card.php" class="btn btn-primary">View</a>
+=======
 
 <div class="eco-header">
     <h4>🌱Gift Categories</h4>
     <p>
         Explore planet-friendly gift options made from natural, recycled, and handcrafted materials.
     </p>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
 </div>
 
 <div class="container category-section">

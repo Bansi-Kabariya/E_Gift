@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eco-Friendly Gift - Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f0fdf4; /* Light green background */
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .success-message {
+            display: none;
+        }
+    </style>
+=======
   <meta charset="UTF-8">
   <title>Login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -98,16 +127,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-color: green !important;
     }
   </style>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
 </head>
 <body>
 
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8">
-      <div class="card">
-        <div class="header text-center">
-          <h3 class="fw-bold mb-0"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</h3>
+<!-- Login Form -->
+<div class="login-form">
+    <h3 class="text-center mb-4">User Login</h3>
+
+    <!-- Success message
+    <div class="alert alert-success success-message" id="successMessage">
+        Login successful!
+    </div> -->
+
+    <form id="loginForm" action="index.php" method="POST" novalidate onsubmit="alert('Login successful!')">
+        <!-- Email Field -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address *</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
+            <div class="error" id="emailError"></div>
         </div>
+<<<<<<< HEAD
+=======
         <div class="card-body p-4">
           <form id="loginForm" method="POST" novalidate>
             <div class="mb-3">
@@ -115,66 +156,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <input type="email" class="form-control" name="email" placeholder="Enter email">
               <div class="error-text">Please enter a valid email.</div>
             </div>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
 
-            <div class="mb-3">
-              <label>Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Enter password">
-              <div class="error-text">Password is required.</div>
-            </div>
-
-            <div class="d-grid mb-3">
-              <button type="submit" class="btn btn-teal">Login</button>
-            </div>
-
-            <div class="text-center">
-              <p><a href="#" class="fw-semibold" style="color:#0d9488;">Forgot Password?</a></p>
-              <p>Don't have an account? 
-                <a href="Registration.php" class="fw-semibold" style="color:#0d9488;">Register Now</a>
-              </p>
-            </div>
-          </form>
+        <!-- Password Field -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password *</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+            <div class="error" id="passwordError"></div>
         </div>
-      </div>
-    </div>
-  </div>
+
+        <!-- Submit Button -->
+        <a href="index.php">
+        <button type="submit" class="btn btn-success w-100">Login</button>
+        </a>
+    </form>
 </div>
 
 <script>
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  let valid = true;
 
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  const form = e.target;
 
-  const email = form.email;
-  const password = form.password;
+$(document).ready(function() {
+    $("#loginForm").submit(function(e) {
+        let isValid = true;
 
-  [email, password].forEach(input => {
-    input.classList.remove('error', 'valid');
-    const error = input.nextElementSibling;
-    if (input.value.trim() === '') {
-      valid = false;
-      input.classList.add('error');
-      error.style.display = 'block';
-    } else if (input.name === 'email' && !emailPattern.test(input.value)) {
-      valid = false;
-      input.classList.add('error');
-      error.innerText = "Enter a valid email address.";
-      error.style.display = 'block';
-    } else {
-      input.classList.add('valid');
-      error.style.display = 'none';
-    }
-  });
+        // Clear all previous errors and hide success message
+        $(".error").text("");
+        $("#successMessage").hide();
 
+<<<<<<< HEAD
+        const email = $("#email").val().trim();
+        const password = $("#password").val();
+
+        // Validate Email
+        if (email === "") {
+            $("#emailError").text("Please enter your email.");
+            isValid = false;
+        } else {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                $("#emailError").text("Please enter a valid email address.");
+                isValid = false;
+            }
+        }
+
+        // Validate Password
+        if (password === "") {
+            $("#passwordError").text("Please enter your password.");
+            isValid = false;
+        }
+
+        // If valid, show success message and prevent actual submission (for demo)
+        if (isValid) {
+            e.preventDefault(); // Prevent actual submission
+            $("#successMessage").show(); // Show success alert
+            // Optionally, you can submit the form here if connected to the backend
+            // this.submit();
+        } else {
+            e.preventDefault(); // Prevent submission if there are errors
+        }
+    });
+=======
   if (valid) {
     this.submit();   // send form to PHP
   }
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22
 });
 </script>
 
 </body>
 </html>
+<<<<<<< HEAD
+=======
 
 <?php include 'footer.php'; ?>
+>>>>>>> 65d0f0fe804f9e820f74054ed5a86559f5d1ff22

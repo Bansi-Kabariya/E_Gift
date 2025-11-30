@@ -27,9 +27,7 @@
         <img src="img/s2.jpg" width="400" height="300">
     </td>
     <td>
-        <p><b>Home Page Content for Eco-Friendly Gift Website
-
-Hero Section</b>
+        <p><b>Home Page Content for Eco-Friendly Gift Website Hero Section</b>
 Welcome to Eco-Friendly Gift , your one-stop destination for thoughtful, sustainable gifts that care for the planet. Our carefully curated collection of eco-friendly products combines style, quality, and environmental responsibility.<br>
  From reusable bottles and jute bags to organic personal care items and beautifully packaged gift boxes, every item is designed to make a difference. <br>
 Start your eco-conscious gifting journey today and explore products that bring joy to your loved ones while protecting the Earth.</p>
@@ -47,8 +45,6 @@ At Eco-Friendly Gift, we believe that every purchase can make a positive impact.
         </td>
     </tr>
 </table>
-
-<br>
 
       <?php include'footer.php'; ?>
 </body>

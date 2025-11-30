@@ -19,7 +19,7 @@
 </head>
 <body>
     
-<footer style="background-color:#ACE1AF; color:#2e7d32; padding:20px; text-align:center; width: 100%;">
+<footer style="background-color:#e8f5e9; color:#2e7d32; padding:20px; text-align:center; width: 100%;">
     <div class="footer-content">
         <p>&copy; <?php echo date("Y"); ?> Eco-Friendly Gift System. All rights reserved.</p>
         
