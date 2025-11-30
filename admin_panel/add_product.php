@@ -85,13 +85,13 @@ include 'db_connect.php';   // DB Connection
 
       <div>
         <label for="pname">Product Name:</label>
-        <input type="text" id="pname" name="pname" placeholder="Enter product name">
+        <input type="text" id="pname" name="pname" placeholder="Enter product name" required>
         <div id="pnameError" class="error-message">Product name is required.</div>
       </div>
 
       <div>
         <label for="pcat">Category:</label>
-        <select id="pcat" name="pcat">
+        <select id="pcat" name="pcat" required>
           <option value="">-- Select Category --</option>
 
           <?php 
@@ -107,19 +107,19 @@ include 'db_connect.php';   // DB Connection
 
       <div>
         <label for="price">Price (₹):</label>
-        <input type="number" id="price" name="price" placeholder="Enter price">
+        <input type="number" id="price" name="price" placeholder="Enter price" step="0.01" required>
         <div id="priceError" class="error-message"></div>
       </div>
 
       <div>
         <label for="pdesc">Description:</label>
-        <textarea id="pdesc" name="pdesc" rows="4" placeholder="Enter product description"></textarea>
+        <textarea id="pdesc" name="pdesc" rows="4" placeholder="Enter product description" required></textarea>
         <div id="pdescError" class="error-message">Description is required.</div>
       </div>
 
       <div>
         <label for="pimg">Product Image:</label>
-        <input type="file" id="pimg" name="pimg" accept="image/*">
+        <input type="file" id="pimg" name="pimg" accept="image/*" required>
         <div id="pimgError" class="error-message"></div>
       </div>
 

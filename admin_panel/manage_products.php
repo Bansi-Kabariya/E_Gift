@@ -2,9 +2,6 @@
 include 'admin_panel_main.php'; 
 include 'db_connect.php'; 
 
-// -------------------------------------------
-// SAVE PRODUCT FROM add_product.php FORM
-// -------------------------------------------
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $pname = $_POST['pname'];
@@ -29,11 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($tmpName, $finalPath);
 
     // DB Insert
-    $insertSQL = "INSERT INTO product (p_name, c_id, p_price, p_desc, p_image_url, p_rating)
-                  VALUES ('$pname', '$pcat', '$price', '$pdesc', '$finalPath', 0)";
+    $insertSQL = "INSERT INTO product (p_name, c_id, p_price, p_desc, p_image_url)
+                  VALUES ('$pname', '$pcat', '$price', '$pdesc', '$finalPath')";
 
     if ($con->query($insertSQL)) {
-        echo "<script>alert('Product Added Successfully');</script>";
+        // Redirect to avoid duplicate submission on refresh
+        header("Location: manage_products.php?success=1");
+        exit;
     } 
     else {
         echo "<script>alert('Error Adding Product');</script>";
@@ -91,6 +90,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
+<!-- ✅ Success Popup -->
+<?php 
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    echo "<script>alert('Product Added Successfully!');</script>";
+}
+?>
+
 <div class="section">
 
     <h2>Manage Products
@@ -118,7 +124,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $result = $con->query($sql);
 
-      while ($row = $result->fetch_assoc()) {
+      while ($row = $result->fetch_assoc()) 
+        {
       ?>
       <tr>
         <td><?= $row['p_id'] ?></td>
@@ -128,7 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <td><?= $row['p_desc'] ?></td>
         <td>₹<?= $row['p_price'] ?></td>
       </tr>
-      <?php } ?>
+      <?php 
+    } ?>
 
     </table>
 
