@@ -9,18 +9,27 @@
     <?php include'header.php'; ?>
 
     <style>
-        video
-        {
+        .hero-video 
+         {
+            width: 85%;
+            height: 590px; 
+            object-fit: cover;
             margin-top: 90px;
-        }
+            margin-left: 115px;
+        } 
+        
     </style>
 
 </head>
 <body>
    
-    <video width="100%" height="360"  autoplay loop muted>
+    <!-- <video width="100%" height="360"  autoplay loop muted>
+        <source src="img/efg.mp4" type="video/mp4">
+    </video> -->
+    <video class="hero-video" autoplay loop muted>
         <source src="img/efg.mp4" type="video/mp4">
     </video>
+
 <table>
     <tr>
     <td>
