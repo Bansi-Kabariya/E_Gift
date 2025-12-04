@@ -9,6 +9,7 @@
     <?php include'header.php'; ?>
 
     <style>
+        
         .hero-video 
          {
             width: 85%;

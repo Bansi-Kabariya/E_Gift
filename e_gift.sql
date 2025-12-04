@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2025 at 12:30 PM
+-- Generation Time: Dec 04, 2025 at 06:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `a_pass` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`a_id`, `a_name`, `a_pass`) VALUES
+(101, 'egift', '123');
+
 -- --------------------------------------------------------
 
 --
@@ -44,7 +51,10 @@ CREATE TABLE `cart` (
   `u_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `product_name` int(50) NOT NULL,
-  `cart_price` int(11) NOT NULL
+  `p_price` int(11) NOT NULL,
+  `qty` int(15) NOT NULL,
+  `subtotal` int(15) NOT NULL,
+  `img` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -55,8 +65,25 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `category` (
   `c_id` int(11) NOT NULL,
-  `c_name` varchar(30) NOT NULL
+  `c_name` varchar(30) NOT NULL,
+  `c_desc` varchar(300) NOT NULL,
+  `c_img` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`c_id`, `c_name`, `c_desc`, `c_img`) VALUES
+(5, 'Skin Care', 'Gentle and eco-friendly skin care products designed to keep your skin healthy, glowing, and refreshed.\r\n', '1764433146_p4.jpeg'),
+(6, 'Crochet Items', 'Beautifully woven crochet items that bring a cozy, handmade touch to your everyday life.\r\n', '1764433208_p2.jpeg'),
+(7, 'Saas Bar Handmade Soap', 'Pure, handcrafted soap bars designed to cleanse, moisturize, and refresh your skin naturally.', '1764433272_p6.jpeg'),
+(8, 'Wall Decor', 'Beautiful handcrafted wall decor designed to enhance your home with elegance and creativity.', '1764433314_p10.jpeg'),
+(9, 'Wooden Games', 'Eco-friendly wooden games designed to learning,entertain, and inspire creative thinking.', '1764433360_p3.jpeg'),
+(10, 'Jute & Cotton Items', 'Eco-friendly jute and cotton products crafted for durability, style, and everyday use.', '1764433405_p8.jpeg'),
+(11, 'Kitchen Gift Hamper', 'A collection of quality kitchen items thoughtfully arranged to make the perfect gift.', '1764433494_big1.jpg'),
+(12, 'Stationary Gift Hamper', 'Beautifully packed stationery items to inspire writing and make every moment creative.', '1764433536_p1.jpeg'),
+(13, 'Personal Care Gift Hamper', 'A wellness-focused hamper filled with natural and refreshing care products.', '1764433575_p7.jpeg');
 
 -- --------------------------------------------------------
 
@@ -146,9 +173,18 @@ CREATE TABLE `product` (
   `p_name` varchar(30) NOT NULL,
   `p_image_url` varchar(250) NOT NULL,
   `p_price` int(11) NOT NULL,
-  `p_desc` text NOT NULL,
-  `p_rating` int(11) NOT NULL
+  `p_desc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`p_id`, `c_id`, `p_name`, `p_image_url`, `p_price`, `p_desc`) VALUES
+(21, 5, 'vdffx', 'uploads/692c0721aa8c4_skin7.jpg', 741, 'bvcxghjkjhgf'),
+(22, 5, 'fghbvd', 'uploads/692c074a7a663_skin8.jpeg', 500, 'mjnhbgvfd'),
+(23, 5, 'jvjfjxo', 'uploads/692c079db1631_skin3.jpg', 300, 'fghjkjmnhbgvfcdxs'),
+(24, 5, 'ggrff', 'uploads/692c07bb3cc55_skin5.jpg', 457, 'iuytrfghj,mnb');
 
 -- --------------------------------------------------------
 
@@ -166,6 +202,13 @@ CREATE TABLE `user` (
   `u_phone` varchar(15) NOT NULL,
   `u_address` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `u_name`, `u_gender`, `u_email`, `u_pass`, `u_cpass`, `u_phone`, `u_address`) VALUES
+(1, 'kabariya bansi', 'Female', 'bansi@gmail.com', 'bansiKAB@123', 'bansiKAB@123', '7485954123', 'amreli');
 
 -- --------------------------------------------------------
 
@@ -255,7 +298,9 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`u_id`),
   ADD UNIQUE KEY `UNIQUE` (`u_email`),
   ADD UNIQUE KEY `u_email` (`u_email`),
-  ADD UNIQUE KEY `u_email_2` (`u_email`);
+  ADD UNIQUE KEY `u_email_2` (`u_email`),
+  ADD UNIQUE KEY `u_email_3` (`u_email`),
+  ADD UNIQUE KEY `u_email_4` (`u_email`);
 
 --
 -- Indexes for table `wishlist`
@@ -273,13 +318,25 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
